@@ -1,0 +1,18 @@
+spring:
+  config:
+    activate:
+      on-profile:
+      - local
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver  
+    url: jdbc:mysql://localhost:3360/hyundai_sales_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+    username: user
+    password: password  
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: mysql 
+    database-platform: org.hibernate.dialect.MySQLDialect  
+
+cors:
+  allowed-origins: http://localhost:3000

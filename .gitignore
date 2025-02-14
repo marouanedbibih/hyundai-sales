@@ -27,5 +27,9 @@ backend/build/
 !backend/**/src/main/**/build/
 !backend/**/src/test/**/build/
 
-### VS Code ###
 backend/.vscode/
+
+# Frontend files
+
+# Root files
+.vscode/
