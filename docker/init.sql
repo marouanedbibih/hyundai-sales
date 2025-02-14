@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS hyundai_sales_db;
 CREATE DATABASE IF NOT EXISTS hyundai_sales_db;
 
 CREATE USER IF NOT EXISTS 'user'@'%' IDENTIFIED BY 'password';

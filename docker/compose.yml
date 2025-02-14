@@ -2,24 +2,23 @@ services:
   # MySQL
   mysql:
     image: mysql:8.0
-    container_name: hyundai-sales-mysql
+    container_name: hyundai-sales-mysql-db-container
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: hyundai_sales_db
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     ports:
-      - "3360:3306"
+      - "3359:3306"
     volumes:
-      - mysql-hyundai-sales-db:/var/lib/mysql
+      - hyundai-sales-mysql-data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - hyundai-sales-net
 
 # Volumes
 volumes:
-  mysql-hyundai-sales-db:
-  backend-app:
+  hyundai-sales-mysql-data:
 
 # Networks
 networks:
