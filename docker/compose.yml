@@ -9,16 +9,16 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     ports:
-      - "3307:3306"
+      - "3360:3306"
     volumes:
-      - mysql:/var/lib/mysql
+      - mysql-hyundai-sales-db:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - hyundai-sales-net
 
 # Volumes
 volumes:
-  mysql:
+  mysql-hyundai-sales-db:
   backend-app:
 
 # Networks

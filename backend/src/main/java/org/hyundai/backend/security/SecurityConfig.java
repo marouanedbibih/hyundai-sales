@@ -55,7 +55,7 @@ public class SecurityConfig {
             request
                     .requestMatchers(SWAGGER_URLS).permitAll()
                     // Public endpoints
-                    .requestMatchers("/api/v1/login").permitAll()
+                    .requestMatchers(HttpMethod.POST,"/api/v1/login").permitAll()
                     .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                     // Users endpoints
                     .requestMatchers(HttpMethod.GET, "/api/v1/users").hasAuthority("ADMIN")
