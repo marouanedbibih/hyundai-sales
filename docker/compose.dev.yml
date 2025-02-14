@@ -5,17 +5,29 @@ services:
       context: ../backend
       dockerfile: Dockerfile
     container_name: hyundai-sales-backend
-    volumes:
-      - backend-app:/app
     ports:
-      - "8082:8082"
+      - "8083:8082"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/hyundai_sales_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_URL: jdbc:mysql://hyundai-sales-mysql-db-container:3306/hyundai_sales_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: user
       SPRING_DATASOURCE_PASSWORD: password
       CORS_ALLOWED_ORIGINS: http://localhost:3000
       SPRING_PROFILES_ACTIVE: docker
     depends_on:
       - mysql
+    networks:
+      - hyundai-sales-net
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: hyundai-sales-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8083
+    depends_on:
+      - backend
     networks:
       - hyundai-sales-net
