@@ -2,6 +2,7 @@ services:
   # MySQL
   mysql:
     image: mysql:8.0
+    container_name: hyundai-sales-mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: hyundai_sales_db
@@ -11,12 +12,14 @@ services:
       - "3307:3306"
     volumes:
       - mysql:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - hyundai-sales-net
 
 # Volumes
 volumes:
   mysql:
+  backend-app:
 
 # Networks
 networks:
