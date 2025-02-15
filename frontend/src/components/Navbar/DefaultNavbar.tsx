@@ -1,38 +1,12 @@
-// @ts-nocheck
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import React from "react";
-import {
-  Navbar,
-  MobileNav,
-  Typography,
-  Button,
-  Menu,
-  MenuHandler,
-  MenuList,
-  MenuItem,
-  Avatar,
-  Card,
-  IconButton,
-} from "@material-tailwind/react";
-import {
-  CubeTransparentIcon,
-  UserCircleIcon,
-  CodeBracketSquareIcon,
-  Square3Stack3DIcon,
-  ChevronDownIcon,
-  Cog6ToothIcon,
-  InboxArrowDownIcon,
-  LifebuoyIcon,
-  PowerIcon,
-  RocketLaunchIcon,
-  Bars2Icon,
-} from "@heroicons/react/24/solid";
+import { Navbar } from "@material-tailwind/react";
+
 import { ProfileMenu } from "./ProfileMenu";
 
 export function DefaultNavbar() {
   const [isNavOpen, setIsNavOpen] = React.useState(false);
-
-  const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
 
   React.useEffect(() => {
     window.addEventListener(
@@ -42,7 +16,13 @@ export function DefaultNavbar() {
   }, []);
 
   return (
-    <Navbar className="p-2 lg:rounded-xl " fullWidth>
+    <Navbar
+      className="p-2 lg:rounded-xl "
+      fullWidth
+      placeholder={undefined}
+      onPointerEnterCapture={undefined}
+      onPointerLeaveCapture={undefined}
+    >
       <div className="relative mx-auto flex items-center justify-between text-blue-gray-900">
         <ProfileMenu />
       </div>
