@@ -23,4 +23,4 @@ volumes:
 # Networks
 networks:
   hyundai-sales-net:
-    driver: bridge
+    driver: overlay

@@ -1,222 +1,231 @@
-# Hyundai Sales Management System
+# 🚗 Hyundai Sales Management System
 
-## Table of Contents
+## 📌 Table of Contents
 
-1. [Overview](https://www.notion.so/README-103c09d1747f80ae8003d44dcc2fbe75?pvs=21)
-2. [Features](https://www.notion.so/README-103c09d1747f80ae8003d44dcc2fbe75?pvs=21)
-3. [Technologies Used](https://www.notion.so/README-103c09d1747f80ae8003d44dcc2fbe75?pvs=21)
-4. [Installation](https://www.notion.so/README-103c09d1747f80ae8003d44dcc2fbe75?pvs=21)
-   * [Prerequisites](https://www.notion.so/README-103c09d1747f80ae8003d44dcc2fbe75?pvs=21)
-   * [Cloning the Repository](https://www.notion.so/README-103c09d1747f80ae8003d44dcc2fbe75?pvs=21)
-   * [Setting Up the Backend](https://www.notion.so/README-103c09d1747f80ae8003d44dcc2fbe75?pvs=21)
-   * [Setting Up the Frontend](https://www.notion.so/README-103c09d1747f80ae8003d44dcc2fbe75?pvs=21)
-   * [Docker Setup](https://www.notion.so/README-103c09d1747f80ae8003d44dcc2fbe75?pvs=21)
-5. [Usage](https://www.notion.so/README-103c09d1747f80ae8003d44dcc2fbe75?pvs=21)
-   * [Access the Application](https://www.notion.so/README-103c09d1747f80ae8003d44dcc2fbe75?pvs=21)
-   * [API Endpoints](https://www.notion.so/README-103c09d1747f80ae8003d44dcc2fbe75?pvs=21)
-6. [Testing](https://www.notion.so/README-103c09d1747f80ae8003d44dcc2fbe75?pvs=21)
-7. [Contributing](https://www.notion.so/README-103c09d1747f80ae8003d44dcc2fbe75?pvs=21)
-8. [License](https://www.notion.so/README-103c09d1747f80ae8003d44dcc2fbe75?pvs=21)
-9. [Contact](https://www.notion.so/README-103c09d1747f80ae8003d44dcc2fbe75?pvs=21)
+- [📖 Overview](#-overview)  
+- [✨ Features](#-features)  
+- [🛠️ Tech Stack](#️-tech-stack)  
+- [📂 Project Structure](#-project-structure)  
+- [🚀 Getting Started](#-getting-started)  
+  - [🔧 Prerequisites](#-prerequisites)  
+  - [📥 Installation](#-installation)  
+  - [🔄 Running the Project](#-running-the-project)  
+- [🖥️ API Documentation](#-api-documentation)  
+- [🛠️ Development & Testing](#-development--testing)  
+- [📌 Deployment](#-deployment)  
+- [🤝 Contributing](#-contributing)  
+- [📝 License](#-license)  
+- [📞 Contact](#-contact)  
+- [🌍 Live Demo](#-live-demo)  
 
-## Overview
+---
 
-**Hyundai Sales Management System** is a comprehensive solution designed to streamline Hyundai vehicle sales and after-sales processes. The application facilitates efficient management of clients, vehicles, sales, and after-sales services. Built with a modern tech stack, this project integrates a Next.js frontend, a Spring Boot backend, and a MySQL database, all managed and deployed using Docker.
+## 📖 Overview  
 
-![1726502420238](images/README/1726502420238.png)
+**Hyundai Sales Management System** is a modern and scalable web application designed to **streamline vehicle sales and after-sales processes**. This system enables **dealerships** to efficiently manage clients, vehicles, sales transactions, and maintenance services.  
 
-## Features
+The project is **containerized using Docker** and follows **a microservice-oriented structure** for **scalability** and **ease of deployment**.  
 
-* **Client Management**: Add, update, and manage client information.
-* **Vehicle Management**: Track and manage vehicle inventory.
-* **Sales Management**: Handle sales transactions and track their statuses.
-* **After-Sales Services**: Manage service requests, repairs, and maintenance.
-* **Role-Based Access Control**: Different user roles with varying access permissions.
-* **Responsive Frontend**: User-friendly interface built with Next.js and Material Tailwind.
+![Overview](/docs/images/overview.png)
 
-## Technologies Used
+---
 
-* **Frontend**: Next.js, TypeScript, Material Tailwind, Heroicons
-* **Backend**: Spring Boot, MySQL
-* **Containerization**: Docker, Docker Compose
+## ✨ Features  
 
-## Installation
+✅ **Client Management** – Add, update, and manage customer information.  
+✅ **Vehicle Inventory** – Track and manage vehicles.  
+✅ **Sales Transactions** – Process and monitor sales.  
+✅ **After-Sales Service** – Handle maintenance requests and repairs.  
+✅ **Role-Based Access Control (RBAC)** – Admin, Sales, and Service roles.  
+✅ **Modern UI/UX** – Built with **Next.js**, **Tailwind CSS**, and **Material UI**.  
+✅ **REST API** – Powered by **Spring Boot** with **MySQL database**.  
 
-### Prerequisites
+---
 
-* Node.js (for frontend)
-* Docker (for containerization)
-* MySQL (for database)
-* Java 21 (for backend)
+## 🛠️ Tech Stack  
 
-### Cloning the Repository
+| Layer            | Technology Stack                                |
+|-----------------|------------------------------------------------|
+| **Frontend**    | Next.js, TypeScript, Tailwind CSS, Material UI |
+| **Backend**     | Spring Boot, MySQL, JPA, Spring Security      |
+| **API**         | REST API with OpenAPI Documentation           |
+| **Containerization** | Docker, Docker Compose                    |
+| **Orchestration** | Docker Swarm                                 |
+| **Version Control** | Git, GitHub                               |
 
-To clone the repository along with its submodules (frontend and backend):
+---
 
-```bash
-git clone --recurse-submodules <https://github.com/yourusername/Hyundai-Sales-App.git>
-cd Hyundai-Sales-App
-
-```
-
-### Setting Up the Backend
-
-1. **Navigate to the Backend Directory**:
-   ```bash
-   cd backend
-
-   ```
-2. **Install Dependencies**:
-   ```bash
-   ./mvnw install
-
-   ```
-3. **Configure Environment Variables**:
-   Create a `.env` file in the `backend` directory with the following content:
-   ```
-   # Application properties
-   SERVER_PORT=8080
-   APP_NAME=hyundai-backend
-
-   # Database properties
-   DB_HOST=localhost
-   DB_PORT=3306
-   DB_NAME=hyundai-db
-   DB_USERNAME=username
-   DB_PASSWORD=password
-
-   CORS_ALLOWED_ORIGINS=http://localhost:3000,<http://localhost:3001>
-
-   ```
-4. **Run the Backend**:
-   ```bash
-   ./mvnw spring-boot:run
-
-   ```
-
-### Setting Up the Frontend
-
-1. **Navigate to the Frontend Directory**:
-   ```bash
-   cd ../frontend
-
-   ```
-2. **Install Dependencies**:
-   ```bash
-   npm install
-
-   ```
-3. **Run the Frontend**:
-   ```bash
-   npm run dev
-
-   ```
-
-### Docker Setup
-
-1. **Build Docker Images**:
-   ```bash
-   docker-compose build
-
-   ```
-2. **Run Docker Containers**:
-   ```bash
-   docker-compose up
-
-   ```
-
-## Usage
-
-### Access the Application
-
-* Frontend: [http://localhost:3000](http://localhost:3000)
-* Backend API: [http://localhost:8080](http://localhost:8080)
-
-### API Endpoints
+## 📂 Project Structure  
 
 ```
-# Public endpoints
-- POST /api/v1/login: Login to the system
-
-# User endpoints
-- GET /api/v1/users: Retrieve all users
-- GET /api/v1/users/search: Search for users
-- GET /api/v1/user/{id}: Retrieve a specific user by ID
-- POST /api/v1/user: Create a new user
-- PUT /api/v1/user/{id}: Update a specific user by ID
-- DELETE /api/v1/user/{id}: Delete a specific user by ID
-
-# Client endpoints
-- GET /api/v1/clients: Retrieve all clients
-- GET /api/v1/clients/search: Search for clients
-- GET /api/v1/client/{id}: Retrieve a specific client by ID
-- POST /api/v1/client: Create a new client
-- PUT /api/v1/client/{id}: Update a specific client by ID
-- DELETE /api/v1/client/{id}: Delete a specific client by ID
-
-# Vehicle endpoints
-- GET /api/v1/vehicles: Retrieve all vehicles
-- GET /api/v1/vehicles/search: Search for vehicles
-- GET /api/v1/vehicle/{id}: Retrieve a specific vehicle by ID
-- POST /api/v1/vehicle: Create a new vehicle
-- PUT /api/v1/vehicle/{id}: Update a specific vehicle by ID
-- DELETE /api/v1/vehicle/{id}: Delete a specific vehicle by ID
-
-# Sales endpoints
-- GET /api/v1/sales: Retrieve all sales
-- GET /api/v1/sales/search: Search for sales
-- GET /api/v1/sale/{id}: Retrieve a specific sale by ID
-- POST /api/v1/sale: Create a new sale
-- PUT /api/v1/sale/{id}: Update a specific sale by ID
-- DELETE /api/v1/sale/{id}: Delete a specific sale by ID
-
-# After-sales endpoints
-- GET /api/v1/after-sales: Retrieve all after-sales services
-- GET /api/v1/after-sales/search: Search for after-sales services
-- GET /api/v1/after-sale/{id}: Retrieve a specific after-sales service by ID
-- POST /api/v1/after-sale: Create a new after-sales service
-- PUT /api/v1/after-sale/{id}: Update a specific after-sales service by ID
-- DELETE /api/v1/after-sale/{id}: Delete a specific after-sales service by ID
-
+hyundai-sales/
+│── backend/         # Spring Boot Backend
+│   ├── src/        # Application source code
+│   ├── pom.xml     # Maven dependencies
+│   ├── Dockerfile  # Backend Docker configuration
+│
+│── frontend/        # Next.js Frontend
+│   ├── src/        # Frontend source code
+│   ├── package.json # Node.js dependencies
+│   ├── Dockerfile  # Frontend Docker configuration
+│
+│── docker/          # Docker Setup
+│   ├── compose.yml  # Main Docker Compose file
+│   ├── compose.dev.yml  # Development Docker config
+│   ├── compose.prod.yml # Production Docker config
+│   ├── init.sql     # Database initialization script
+│
+│── docs/            # Documentation files
+│── LICENSE          # License file
+│── README.md        # Project documentation
 ```
 
-## Testing
+---
 
-1. **Run Backend Tests**:
-   ```bash
-   ./mvnw test
+## 🚀 Getting Started  
 
+### 🔧 Prerequisites  
+
+Ensure you have the following installed:  
+
+- **Node.js** (for frontend)  
+- **Java 21** (for backend)  
+- **Docker & Docker Compose**  
+- **MySQL**  
+
+---
+
+### 📥 Installation  
+
+Clone the repository:
+
+```sh
+git clone https://github.com/marouanedbibih/hyundai-sales.git
+cd hyundai-sales
+```
+
+---
+
+### 🔄 Running the Project  
+
+#### 🚀 Run with Docker (Recommended)  
+
+```sh
+cd docker
+docker compose -f compose.yml -f compose.dev.yml up --build
+```
+
+#### 🖥️ Run Backend (Standalone)  
+
+```sh
+cd backend
+./mvnw install
+./mvnw spring-boot:run
+```
+
+#### 🌐 Run Frontend (Standalone)  
+
+```sh
+cd frontend
+npm install
+npm run dev
+```
+
+---
+
+
+## 🖥️ API Documentation  
+
+The backend exposes a **REST API** for frontend interaction.  
+
+| Method | Endpoint                        | Description               |
+|--------|---------------------------------|---------------------------|
+| `POST` | `/api/v1/login`                | User login                |
+| `GET`  | `/api/v1/users`                | Fetch all users           |
+| `GET`  | `/api/v1/clients`              | Fetch all clients         |
+| `GET`  | `/api/v1/vehicles`             | Fetch all vehicles        |
+| `GET`  | `/api/v1/sales`                | Fetch all sales           |
+| `GET`  | `/api/v1/after-sales`          | Fetch after-sales records |
+
+> **Complete API docs** are available via Swagger at:  
+> **`http://api.hyundai-sales.marouanedbibih.engineer/swagger-ui.html`**
+
+---
+
+## 🛠️ Development & Testing  
+
+### ✅ Running Backend Tests  
+
+```sh
+cd backend
+./mvnw test
+```
+
+### ✅ Running Frontend Tests  
+
+```sh
+cd frontend
+npm test
+```
+
+---
+
+## 📌 Deployment  
+
+For **production deployment**, use:  
+
+```sh
+docker compose -f compose.yml -f compose.prod.yml up --build -d
+```
+
+For **Docker Swarm**, use:
+```sh
+docker stack deploy -c compose.yml -c compose.prod.yml hyundai-sales
+```
+
+The application will be available at:  
+
+- **Frontend**: [http://hyundai-sales.marouanedbibih.engineer](http://hyundai-sales.marouanedbibih.engineer)  
+- **Backend API**: [http://api.hyundai-sales.marouanedbibih.engineer](http://api.hyundai-sales.marouanedbibih.engineer)
+- **Username:** admin
+- **Password:** password
+
+
+
+---
+
+## 🤝 Contributing  
+
+1. **Fork the Repository**  
+2. **Create a Feature Branch**  
+   ```sh
+   git checkout -b feature/your-feature
    ```
-2. **Run Frontend Tests**:
-   ```bash
-   npm test
-
+3. **Commit Your Changes**  
+   ```sh
+   git commit -m "Add feature description"
    ```
-
-## Contributing
-
-1. **Fork the Repository**
-2. **Create a Feature Branch**:
-   ```bash
-   git checkout -b feature/YourFeature
-
+4. **Push to the Branch**  
+   ```sh
+   git push origin feature/your-feature
    ```
-3. **Commit Your Changes**:
-   ```bash
-   git commit -m "Add your message here"
+5. **Submit a Pull Request**  
 
-   ```
-4. **Push to the Branch**:
-   ```bash
-   git push origin feature/YourFeature
+---
 
-   ```
-5. **Create a Pull Request**
+## 📝 License  
 
-## License
+This project is **open-source** under the **MIT License**.  
 
-This project is licensed under the MIT LICENCE
+---
 
-## Contact
+## 📞 Contact  
 
-For questions or support, please reach out to Marouane Dbibih at [marrouane.dbibih@gmail.com](mailto:marrouane.dbibih@gmail.com)
+For any inquiries, reach out to:  
+
+📧 **Marouane Dbibih** – [m.dbibih@gmail.com](mailto:m.dbibih@gmail.com)  
+
+🌍 **Live Demo**  
+🚀 [Hyundai Sales Management System](http://hyundai-sales.marouanedbibih.engineer)
+
+---
