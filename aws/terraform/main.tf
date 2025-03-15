@@ -9,11 +9,14 @@ module "security" {
   allowed_ip = "0.0.0.0/0"
 }
 
-# module "ec2" {
-#   source       = "./modules/ec2"
-#   vpc_id       = module.vpc.vpc_id
-#   subnets      = module.vpc.private_subnets
-# }
+module "ec2" {
+  source       = "./modules/ec2"
+  vpc_id       = module.vpc.vpc_id
+  subnet_id        = module.vpc.devops_subnet_id
+  public_subnet_id = module.vpc.public_subnet_id
+  security_group_id = module.security.hyundai-sales-sg-id
+  key_pair = "../keys/id_rsa.pub"
+}
 
 # module "rds" {
 #   source    = "./modules/rds"

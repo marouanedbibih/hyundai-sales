@@ -13,11 +13,28 @@ variable "instance_type" {
 variable "key_pair" {
   description = "The SSH key pair name"
   type        = string
-  default     = "../../../keys/id_rsa.pub"
 }
 
-variable "devops_subnet_id" {
-  description = "The subnet ID for the DevOps EC2 instances"
+variable "vpc_id" {
+  description = "The VPC ID"
   type        = string
-  default =  aws_subnet.devops.id 
 }
+
+variable "subnet_id" {
+  description = "The subnet ID"
+  type        = string 
+}
+
+variable "public_subnet_id" {
+  description = "The public subnet ID"
+  type        = string
+  
+}
+
+variable "security_group_id" {
+  description = "The security group ID"
+  type        = string
+}
+
+
+
