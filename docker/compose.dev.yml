@@ -2,8 +2,8 @@
 services:
   backend:
     build:
-      context: ../backend
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: docker/Dockerfile.backend
     container_name: hyundai-sales-backend
     ports:
       - "8083:8082"

@@ -4,10 +4,10 @@ FROM eclipse-temurin:21-jdk-alpine AS build
 VOLUME /tmp
 WORKDIR /app
 
-COPY mvnw .
-COPY .mvn .mvn
-COPY pom.xml .
-COPY src src
+COPY backend/mvnw .
+COPY backend/.mvn .mvn
+COPY backend/pom.xml .
+COPY backend/src src
 
 RUN ./mvnw install
 
