@@ -5,15 +5,14 @@ on:
     branches:
       - dev
     paths:
-      - ".github/workflows/backend-pipline.yaml"
+      - ".github/workflows/backend-pipeline.yaml"
       - "backend/**"
       - "docker/**"
   pull_request:
     branches:
-      - test
-      - car-service
+        - dev
     paths:
-      - ".github/workflows/backend-pipline.yaml"
+      - ".github/workflows/backend-pipeline.yaml"
       - "backend/**"
       - "docker/**"
   release:
