@@ -46,7 +46,30 @@ jobs:
 
       - name: Run maven tests
         working-directory: ${{ vars.WORKING_DIRECTORY }}
-        run: mvn test
+        run: mvn test jacoco:report
+
+      - name: Cache SonarQube dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.sonar/cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: |
+            ${{ runner.os }}-sonar
+
+      - name: Install SonarScanner
+        run: |
+          wget -qO- https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-5.0.1.3006-linux.zip | bsdtar -xvf- -C /opt/
+          ln -s /opt/sonar-scanner-*/bin/sonar-scanner /usr/local/bin/sonar-scanner
+
+      - name: Run SonarQube Scan
+        env:
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_LOGIN: ${{ secrets.SONAR_LOGIN }}
+        run: |
+          sonar-scanner \
+            -Dsonar.projectKey=hyundai-sales-backend \
+            -Dsonar.host.url=$SONAR_HOST_URL \
+            -Dsonar.login=$SONAR_LOGIN
 
       - name: Build docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ vars.DOCKER_IMAGE_TAG}} -f docker/Dockerfile.backend .
