@@ -10,20 +10,16 @@ module "security" {
 }
 
 module "ec2" {
-  source       = "./modules/ec2"
-  vpc_id       = module.vpc.vpc_id
-  subnet_id        = module.vpc.devops_subnet_id
-  public_subnet_id = module.vpc.public_subnet_id
+  source            = "./modules/ec2"
+  vpc_id            = module.vpc.vpc_id
+  subnet_id         = module.vpc.devops_subnet_id
+  public_subnet_id  = module.vpc.public_subnet_id
   security_group_id = module.security.hyundai-sales-sg-id
-  key_pair = "../keys/id_rsa.pub"
+  key_pair          = "../keys/id_rsa.pub"
 }
 
-# module "rds" {
-#   source    = "./modules/rds"
-#   vpc_id    = module.vpc.vpc_id
-#   subnet_id = module.vpc.db_subnet
-# }
-
-# module "s3" {
-#   source   = "./modules/s3"
-# }
+module "eks" {
+  source        = "./modules/eks"
+  cluster_name  = "hyundai-eks-cluster"
+  subnet_ids    = [module.vpc.prod_subnet_1_id, module.vpc.prod_subnet_2_id]
+}

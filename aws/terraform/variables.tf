@@ -3,3 +3,9 @@ variable "allowed_ssh_ip" {
   type        = string
   default     = "0.0.0.0/0"  
 }
+
+variable "region" {
+  description = "AWS Region"
+  type        = string
+  default     = "eu-west-3"
+}
