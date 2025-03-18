@@ -50,30 +50,13 @@ jobs:
         working-directory: ${{ vars.WORKING_DIRECTORY }}
         run: mvn test jacoco:report
 
-      - name: Cache SonarQube dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: |
-            ${{ runner.os }}-sonar
-
-      - name: Install Sonar Scanner
-        run: |
-          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-7.0.2.4839-linux-x64.zip
-          unzip sonar-scanner-7.0.2.4839-linux-x64.zip -d /opt/
-          sudo mv /opt/sonar-scanner-7.0.2.4839-linux-x64 /opt/sonar-scanner
-          sudo ln -sf /opt/sonar-scanner/bin/sonar-scanner /usr/local/bin/sonar-scanner
-          echo 'export PATH=$PATH:/opt/sonar-scanner/bin' >> ~/.bashrc
-          source ~/.bashrc
-          sonar-scanner --version
-
       - name: SonarQube Scan
-        working-directory: ${{ vars.WORKING_DIRECTORY }}
-        run: |
-          sonar-scanner \
-            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
-            -Dsonar.login=${{ secrets.SONAR_LOGIN }}
+        uses: sonarsource/sonarcloud-github-action@v4.0.0
+        env:
+          SONAR_LOGIN: ${{ secrets.LOGIN }}
+          SONAR_HOST_URL: ${{ secrets.HOST_URL }}
+        with:
+          projectBaseDir: backend
 
       - name: Build docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ vars.DOCKER_IMAGE_TAG}} -f docker/Dockerfile.backend .
