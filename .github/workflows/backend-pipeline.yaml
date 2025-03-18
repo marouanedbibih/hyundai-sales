@@ -49,12 +49,12 @@ jobs:
       - name: Run maven tests
         working-directory: ${{ vars.WORKING_DIRECTORY }}
         run: mvn test jacoco:report
-
-      - name: SonarQube Scan
-        uses: sonarsource/sonarcloud-github-action@master
+      
+      - name: Official SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v5.0.0
         env:
-          SONAR_LOGIN: ${{ secrets.LOGIN }}
-          SONAR_HOST_URL: ${{ secrets.HOST_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ vars.SONAR_HOST_URL }}
         with:
           projectBaseDir: backend
 
