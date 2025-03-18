@@ -64,7 +64,7 @@ jobs:
         with:
           scanMetadataReportFile: .scannerwork/report-task.txt
           pollingTimeoutSec: 600
-          working-directory: backend
+          working-directory: ${{ vars.WORKING_DIRECTORY }}
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
