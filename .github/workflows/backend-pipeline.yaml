@@ -92,12 +92,17 @@ jobs:
           release_name: Release ${{ github.ref_name }}
           draft: false
           prerelease: false
+
+      - name: Find JAR file
+        id: find_jar
+        run: echo "JAR_PATH=$(find backend/target -name '*.jar' -type f)" >> $GITHUB_ENV
+        
       - name: Upload JAR to Release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ vars.WORKING_DIRECTORY }}/target/*.jar
+          asset_path:  ${{ env.JAR_PATH }}
           asset_name: hyundai-sales-backend-${{vars.DOCKER_IMAGE_TAG}}.jar
           asset_content_type: application/java-archive
