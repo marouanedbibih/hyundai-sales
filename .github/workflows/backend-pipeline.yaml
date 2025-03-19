@@ -77,3 +77,12 @@ jobs:
 
       - name: Push docker image to repository
         run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ vars.DOCKER_IMAGE_TAG}}
+
+      - name: Create Github Release
+        id: create_release
+        uses: actions/create-release@v1
+        with:
+          tag_name: ${{ vars.DOCKER_IMAGE_TAG }}
+          release_name: Release ${{ vars.DOCKER_IMAGE_TAG }}
+          draft: false
+          prerelease: false
