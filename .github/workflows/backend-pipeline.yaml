@@ -19,7 +19,7 @@ on:
     types: [created]
 
 jobs:
-  CI:
+  maven:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -53,7 +53,23 @@ jobs:
       - name: Run maven tests
         working-directory: ${{ vars.WORKING_DIRECTORY }}
         run: mvn test jacoco:report
-      
+
+  sonarqube:
+    runs-on: ubuntu-latest
+    needs: maven
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v4.4.0
+        with:
+          java-version: "21"
+          distribution: "temurin"
+          java-package: "jdk"
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v5.0.0
         env:
@@ -73,6 +89,15 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
+  docker:
+    runs-on: ubuntu-latest
+    needs: maven
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
       - name: Build docker image
         run: docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ vars.DOCKER_IMAGE_TAG}} -f docker/Dockerfile.backend .
 
@@ -81,6 +106,15 @@ jobs:
 
       - name: Push docker image to repository
         run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ vars.DOCKER_IMAGE_TAG}}
+
+  artifacts:
+    runs-on: ubuntu-latest
+    needs: maven
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Create Github Release
         id: create_release
@@ -103,6 +137,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path:  ${{ env.JAR_PATH }}
-          asset_name: hyundai-sales-backend-${{vars.DOCKER_IMAGE_TAG}}.jar
+          asset_path: ${{ env.JAR_PATH }}
+          asset_name: hyundai-sales-backend-${{ vars.DOCKER_IMAGE_TAG }}.jar
           asset_content_type: application/java-archive
