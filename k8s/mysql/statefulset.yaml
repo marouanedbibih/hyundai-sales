@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: hyundai-sales-mysql
+  labels:
+    app: hyundai-sales-mysql
+    tier: database
+spec:
+  serviceName: "hyundai-sales-mysql"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hyundai-sales-mysql
+      tier: database
+  template:
+    metadata:
+      labels:
+        app: hyundai-sales-mysql
+        tier: database
+    spec:
+      containers:
+        - name: hyundai-sales-mysql
+          image: mysql:8.0
+          ports:
+            - containerPort: 3306
+              name: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: hyundai-sales-mysql-secret
+                  key: mysql-root-password
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: hyundai-sales-mysql-secret
+                  key: mysql-user
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: hyundai-sales-mysql-secret
+                  key: mysql-password
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: hyundai-sales-mysql-config
+                  key: database-name
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
+            - name:  init-db
+              mountPath: /docker-entrypoint-initdb.d
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-persistent-storage
+        - name: init-db
+          configMap:
+            name: hyundai-sales-mysql-config
+            items:
+              - key: init-file-path
+                path: init.sql            
+  volumeClaimTemplates:
+    - metadata:
+        name: mysql-persistent-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
