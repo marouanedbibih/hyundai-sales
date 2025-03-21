@@ -8,6 +8,8 @@ on:
       - ".github/workflows/backend-pipeline.yaml"
       - "backend/**"
       - "docker/**"
+      - "k8s/mysql/**"
+      - "k8s/backend/**"
   pull_request:
     branches:
       - dev
@@ -15,6 +17,8 @@ on:
       - ".github/workflows/backend-pipeline.yaml"
       - "backend/**"
       - "docker/**"
+      - "k8s/mysql/**"
+      - "k8s/backend/**"
   release:
     types: [created]
 
@@ -82,27 +86,3 @@ jobs:
       - name: Push docker image to repository
         run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ vars.DOCKER_IMAGE_TAG}}
 
-      - name: Create Github Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref_name }}
-          release_name: Release ${{ github.ref_name }}
-          draft: false
-          prerelease: false
-
-      - name: Find JAR file
-        id: find_jar
-        run: echo "JAR_PATH=$(find backend/target -name '*.jar' -type f)" >> $GITHUB_ENV
-        
-      - name: Upload JAR to Release
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path:  ${{ env.JAR_PATH }}
-          asset_name: hyundai-sales-backend-${{vars.DOCKER_IMAGE_TAG}}.jar
-          asset_content_type: application/java-archive
