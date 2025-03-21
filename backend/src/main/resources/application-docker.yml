@@ -19,3 +19,12 @@ cors:
 
 server:
   port:  8082
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env,metrics,httptracen,loggers
+  endpoint:
+    health:
+      show-details: always

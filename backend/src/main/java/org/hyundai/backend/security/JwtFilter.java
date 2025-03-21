@@ -30,6 +30,14 @@ public class JwtFilter extends OncePerRequestFilter {
     @Autowired
     private CustomUserDetailsService userDetailsService;
 
+    private static final String[] PUBLIC_URLS = {
+            "/api/auth/register",
+            "/api/auth/login",
+            "/home",
+            "/actuator/**",
+
+    };
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
@@ -92,8 +100,12 @@ public class JwtFilter extends OncePerRequestFilter {
 
 
     private boolean isPublicEndpoint(String path) {
-        return path.equals("/api/auth/register") || path.equals("/api/auth/login") || path.equals("/home");
+        for (String url : PUBLIC_URLS) {
+            if (path.contains(url)) {
+                return true;
+            }
+        }
+        return false;
     }
-    
 
 }

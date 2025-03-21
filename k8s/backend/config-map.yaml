@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hyundai-sales-backend-config
+  namespace: default
+data:
+  host: hyundai-sales-mysql
+  port: "3306"
+  db: hyundai_sales_db
+  cors-allowed-origins: "*"
