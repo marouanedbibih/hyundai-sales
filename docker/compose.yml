@@ -3,6 +3,7 @@ services:
   mysql:
     image: mysql:8.0
     container_name: hyundai-sales-mysql-db-container
+    restart: on-failure
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: hyundai_sales_db
@@ -23,4 +24,4 @@ volumes:
 # Networks
 networks:
   hyundai-sales-net:
-    driver: overlay
+    driver: bridge

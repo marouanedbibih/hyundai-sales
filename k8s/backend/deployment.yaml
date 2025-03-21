@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hyundai-sales-backend
+  labels:
+    app: hyundai-sales
+    tier: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hyundai-sales
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: hyundai-sales
+        tier: backend
+    spec:
+      containers:
+        - name: hyundai-sales-backend
+          image: marouanedbibih/hyundai-sales-backend:latest
+          ports:
+            - containerPort: 8082
+          env:
+            - name: MYSQL_HOST
+              value: hyundai-sales-mysql
+            - name: MYSQL_PORT
+              value: "3306"
+            - name: MYSQL_USER
+              valueFrom:
+                secretKeyRef:
+                  name: hyundai-sales-mysql-secret
+                  key: mysql-user
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: hyundai-sales-mysql-secret
+                  key: mysql-password
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: hyundai-sales-mysql-config
+                  key: database-name
