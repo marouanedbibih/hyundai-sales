@@ -1,24 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hyundai-sales-backend
+  name: backend
   labels:
-    app: hyundai-sales
-    tier: backend
+    app.kubernetes.io/name: backend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: hyundai-sales
-      tier: backend
+      app.kubernetes.io/name: backend
   template:
     metadata:
       labels:
-        app: hyundai-sales
-        tier: backend
+        app.kubernetes.io/name: backend
     spec:
       containers:
-        - name: hyundai-sales-backend
+        - name: backend
           image: marouanedbibih/hyundai-sales-backend:latest
           ports:
             - containerPort: 8082
@@ -28,51 +25,51 @@ spec:
             - name: SPRING_DATASOURCE_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: hyundai-sales-mysql-secret
-                  key: mysql-user
+                  name: mysql-secret
+                  key: user
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: hyundai-sales-mysql-secret
-                  key: mysql-password
+                  name: mysql-secret
+                  key: password
             - name: SPRING_DATASOURCE_HOST
               valueFrom:
                 configMapKeyRef:
-                  name: hyundai-sales-backend-config
-                  key: host
+                  name: backend-config
+                  key: mysql-host
             - name: SPRING_DATASOURCE_PORT
               valueFrom:
                 configMapKeyRef:
-                  name: hyundai-sales-backend-config
-                  key: port
+                  name: backend-config
+                  key: mysql-port
             - name: SPRING_DATASOURCE_DB
               valueFrom:
                 configMapKeyRef:
-                  name: hyundai-sales-backend-config
-                  key: db
+                  name: backend-config
+                  key: mysql-db
             - name: CORS_ALLOWED_ORIGINS
               valueFrom:
                 configMapKeyRef:
-                  name: hyundai-sales-backend-config
+                  name: backend-config
                   key: cors-allowed-origins
             - name: SPRING_PROFILES_ACTIVE
-              value: "docker"
+              value: docker
           resources:
             requests:
-              memory: "64Mi"
-              cpu: "250m"
+              memory: "512Mi"
+              cpu: "1000m"
             limits:
-              memory: "128Mi"
-              cpu: "500m"
-          livenessProbe:
-            httpGet:
-              path: /actuator/health
-              port: 8082
-            initialDelaySeconds: 30
-            periodSeconds: 10
-          readinessProbe:
-            httpGet:
-              path: /actuator/health
-              port: 8082
-            initialDelaySeconds: 30
-            periodSeconds: 10
+              memory: "1024Mi"
+              cpu: "2000m"
+          # livenessProbe:
+          #   httpGet:
+          #     path: /actuator/health
+          #     port: 8082
+          #   initialDelaySeconds: 90
+          #   periodSeconds: 30
+          # readinessProbe:
+          #   httpGet:
+          #     path: /actuator/health
+          #     port: 8082
+          #   initialDelaySeconds: 90
+          #   periodSeconds: 30

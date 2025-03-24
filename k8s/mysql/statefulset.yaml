@@ -1,25 +1,22 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: hyundai-sales-mysql
+  name: mysql
   labels:
-    app: hyundai-sales-mysql
-    tier: database
+    app.kubernetes.io/name: mysql
 spec:
-  serviceName: "hyundai-sales-mysql"
+  serviceName: mysql
   replicas: 1
   selector:
     matchLabels:
-      app: hyundai-sales-mysql
-      tier: database
+      app.kubernetes.io/name: mysql
   template:
     metadata:
       labels:
-        app: hyundai-sales-mysql
-        tier: database
+        app.kubernetes.io/name: mysql
     spec:
       containers:
-        - name: hyundai-sales-mysql
+        - name: mysql
           image: mysql:8.0
           ports:
             - containerPort: 3306
@@ -28,22 +25,22 @@ spec:
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: hyundai-sales-mysql-secret
-                  key: mysql-root-password
+                  name: mysql-secret
+                  key: root-password
             - name: MYSQL_USER
               valueFrom:
                 secretKeyRef:
-                  name: hyundai-sales-mysql-secret
-                  key: mysql-user
+                  name: mysql-secret
+                  key: user
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: hyundai-sales-mysql-secret
-                  key: mysql-password
+                  name: mysql-secret
+                  key: password
             - name: MYSQL_DATABASE
               valueFrom:
                 configMapKeyRef:
-                  name: hyundai-sales-mysql-config
+                  name: mysql
                   key: database-name
           volumeMounts:
             - name: mysql-persistent-storage
@@ -56,7 +53,7 @@ spec:
             claimName: mysql-persistent-storage
         - name: init-db
           configMap:
-            name: hyundai-sales-mysql-config
+            name: mysql
             items:
               - key: init-file-path
                 path: init.sql            

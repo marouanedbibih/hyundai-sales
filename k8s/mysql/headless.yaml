@@ -1,15 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hyundai-sales-mysql
+  name: mysql
   labels:
-    app: hyundai-sales-mysql
-    tier: database
+    app.kubernetes.io/name: mysql
 spec:
   ports:
     - port: 3306
       name: mysql
   clusterIP: None
   selector:
-    app: hyundai-sales-mysql
-    tier: database
+    app.kubernetes.io/name: mysql
