@@ -21,3 +21,13 @@ springdoc:
     path: /api-docs
   swagger-ui:
     path: /swagger-ui
+
+# public:
+#   urls:
+#     - "/swagger-ui/**"
+#     - "/swagger-ui.html"
+#     - "/v3/api-docs/**"
+#     - "/api-docs/**"
+#     - "/swagger-resources/**"
+#     - "/webjars/**"
+#     - "/actuator/**"

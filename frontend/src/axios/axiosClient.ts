@@ -1,6 +1,7 @@
 import axios, { InternalAxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
+import { getApiUrl } from '@/config';
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+const apiUrl = getApiUrl();
 
 const axiosClient = axios.create({
   baseURL: `${apiUrl}`,

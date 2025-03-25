@@ -44,7 +44,8 @@ public class SecurityConfig {
             "/v3/api-docs/**",
             "/api-docs/**",
             "/swagger-resources/**",
-            "/webjars/**" };
+            "/webjars/**" ,
+    };
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -57,6 +58,7 @@ public class SecurityConfig {
                     // Public endpoints
                     .requestMatchers(HttpMethod.POST,"/api/v1/login").permitAll()
                     .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/actuator/**").permitAll()
                     // Users endpoints
                     .requestMatchers(HttpMethod.GET, "/api/v1/users").hasAuthority("ADMIN")
                     .requestMatchers(HttpMethod.GET, "/api/v1/users/search").hasAuthority("ADMIN")

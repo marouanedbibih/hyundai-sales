@@ -1,0 +1,6 @@
+projectKey=hyundai-sales-backend
+serverUrl=http://sonarqube.hyundai-sales.marouanedbibih.studio
+serverVersion=9.9.8.100196
+dashboardUrl=http://sonarqube.hyundai-sales.marouanedbibih.studio/dashboard?id=hyundai-sales-backend
+ceTaskId=AZWfzfqOtpZL5uYlEUi_
+ceTaskUrl=http://sonarqube.hyundai-sales.marouanedbibih.studio/api/ce/task?id=AZWfzfqOtpZL5uYlEUi_

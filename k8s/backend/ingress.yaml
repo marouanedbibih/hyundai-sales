@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: backend-ingress
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - api.hyundai-sales.local
+      secretName: hyundai-sales-backend-tls
+  rules:
+    - host: api.hyundai-sales.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: backend
+                port:
+                  number: 8082
+
+

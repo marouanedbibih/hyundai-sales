@@ -1,48 +1,47 @@
-# 🚗 Hyundai Sales Management System
+# Hyundai Sales Management System
 
-## 📌 Table of Contents
+## Table of Contents
 
-- [📖 Overview](#-overview)  
-- [✨ Features](#-features)  
-- [🛠️ Tech Stack](#️-tech-stack)  
-- [📂 Project Structure](#-project-structure)  
-- [🚀 Getting Started](#-getting-started)  
-  - [🔧 Prerequisites](#-prerequisites)  
-  - [📥 Installation](#-installation)  
-  - [🔄 Running the Project](#-running-the-project)  
-- [🖥️ API Documentation](#-api-documentation)  
-- [🛠️ Development & Testing](#-development--testing)  
-- [📌 Deployment](#-deployment)  
-- [🤝 Contributing](#-contributing)  
-- [📝 License](#-license)  
-- [📞 Contact](#-contact)  
-- [🌍 Live Demo](#-live-demo)  
-
+- [Overview](#-overview)  
+- [Features](#-features)  
+- [Tech Stack](#️-tech-stack)  
+- [Project Structure](#-project-structure)  
+- [Getting Started](#-getting-started)  
+  - [Prerequisites](#-prerequisites)  
+  - [Installation](#-installation)  
+  - [Running the Project](#-running-the-project)  
+- [API Documentation](#-api-documentation)  
+- [Development & Testing](#-development--testing)  
+- [Deployment](#-deployment)  
+- [Contributing](#-contributing)  
+- [License](#-license)  
+- [Contact](#-contact)  
+- [Live Demo](#-live-demo)  
 ---
 
-## 📖 Overview  
+## Overview  
 
 **Hyundai Sales Management System** is a modern and scalable web application designed to **streamline vehicle sales and after-sales processes**. This system enables **dealerships** to efficiently manage clients, vehicles, sales transactions, and maintenance services.  
 
-The project is **containerized using Docker** and follows **a microservice-oriented structure** for **scalability** and **ease of deployment**.  
+The project is **containerized using Docker** and deploy using **Kubernetes**.  
 
 ![Overview](/docs/images/overview.png)
 
 ---
 
-## ✨ Features  
+## Features  
 
-✅ **Client Management** – Add, update, and manage customer information.  
-✅ **Vehicle Inventory** – Track and manage vehicles.  
-✅ **Sales Transactions** – Process and monitor sales.  
-✅ **After-Sales Service** – Handle maintenance requests and repairs.  
-✅ **Role-Based Access Control (RBAC)** – Admin, Sales, and Service roles.  
-✅ **Modern UI/UX** – Built with **Next.js**, **Tailwind CSS**, and **Material UI**.  
-✅ **REST API** – Powered by **Spring Boot** with **MySQL database**.  
+**Client Management** – Add, update, and manage customer information.  
+**Vehicle Inventory** – Track and manage vehicles.  
+**Sales Transactions** – Process and monitor sales.  
+**After-Sales Service** – Handle maintenance requests and repairs.  
+**Role-Based Access Control (RBAC)** – Admin, Sales, and Service roles.  
+**Modern UI/UX** – Built with **Next.js**, **Tailwind CSS**, and **Material UI**.  
+**REST API** – Powered by **Spring Boot** with **MySQL database**.  
 
 ---
 
-## 🛠️ Tech Stack  
+## Tech Stack  
 
 | Layer            | Technology Stack                                |
 |-----------------|------------------------------------------------|
@@ -55,7 +54,7 @@ The project is **containerized using Docker** and follows **a microservice-orien
 
 ---
 
-## 📂 Project Structure  
+## Project Structure  
 
 ```
 hyundai-sales/
@@ -82,9 +81,9 @@ hyundai-sales/
 
 ---
 
-## 🚀 Getting Started  
+## Getting Started  
 
-### 🔧 Prerequisites  
+### Prerequisites  
 
 Ensure you have the following installed:  
 
@@ -95,7 +94,7 @@ Ensure you have the following installed:
 
 ---
 
-### 📥 Installation  
+### Installation  
 
 Clone the repository:
 
@@ -106,16 +105,16 @@ cd hyundai-sales
 
 ---
 
-### 🔄 Running the Project  
+### Running the Project  
 
-#### 🚀 Run with Docker (Recommended)  
+#### Run with Docker (Recommended)  
 
 ```sh
 cd docker
 docker compose -f compose.yml -f compose.dev.yml up --build
 ```
 
-#### 🖥️ Run Backend (Standalone)  
+#### Run Backend (Standalone)  
 
 ```sh
 cd backend
@@ -123,7 +122,7 @@ cd backend
 ./mvnw spring-boot:run
 ```
 
-#### 🌐 Run Frontend (Standalone)  
+#### Run Frontend (Standalone)  
 
 ```sh
 cd frontend
@@ -134,7 +133,7 @@ npm run dev
 ---
 
 
-## 🖥️ API Documentation  
+## API Documentation  
 
 The backend exposes a **REST API** for frontend interaction.  
 
@@ -152,16 +151,16 @@ The backend exposes a **REST API** for frontend interaction.
 
 ---
 
-## 🛠️ Development & Testing  
+## Development & Testing  
 
-### ✅ Running Backend Tests  
+### Running Backend Tests  
 
 ```sh
 cd backend
 ./mvnw test
 ```
 
-### ✅ Running Frontend Tests  
+### Running Frontend Tests  
 
 ```sh
 cd frontend
@@ -170,7 +169,7 @@ npm test
 
 ---
 
-## 📌 Deployment  
+## Deployment  
 
 For **production deployment**, use:  
 
@@ -194,7 +193,7 @@ The application will be available at:
 
 ---
 
-## 🤝 Contributing  
+## Contributing  
 
 1. **Fork the Repository**  
 2. **Create a Feature Branch**  
@@ -213,19 +212,19 @@ The application will be available at:
 
 ---
 
-## 📝 License  
+## License  
 
 This project is **open-source** under the **MIT License**.  
 
 ---
 
-## 📞 Contact  
+## Contact  
 
 For any inquiries, reach out to:  
 
-📧 **Marouane Dbibih** – [m.dbibih@gmail.com](mailto:m.dbibih@gmail.com)  
+**Marouane Dbibih** – [m.dbibih@gmail.com](mailto:m.dbibih@gmail.com)  
 
-🌍 **Live Demo**  
-🚀 [Hyundai Sales Management System](http://hyundai-sales.marouanedbibih.engineer)
+**Live Demo**  
+[Hyundai Sales Management System](http://hyundai-sales.marouanedbibih.engineer)
 
 ---
