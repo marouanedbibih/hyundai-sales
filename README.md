@@ -1,30 +1,29 @@
-# 🚗 Hyundai Sales Management System
+# Hyundai Sales Management System
 
-## 📌 Table of Contents
+## Table of Contents
 
-- [📖 Overview](#-overview)  
-- [✨ Features](#-features)  
-- [🛠️ Tech Stack](#️-tech-stack)  
-- [📂 Project Structure](#-project-structure)  
-- [🚀 Getting Started](#-getting-started)  
-  - [🔧 Prerequisites](#-prerequisites)  
-  - [📥 Installation](#-installation)  
-  - [🔄 Running the Project](#-running-the-project)  
-- [🖥️ API Documentation](#-api-documentation)  
-- [🛠️ Development & Testing](#-development--testing)  
-- [📌 Deployment](#-deployment)  
-- [🤝 Contributing](#-contributing)  
-- [📝 License](#-license)  
-- [📞 Contact](#-contact)  
-- [🌍 Live Demo](#-live-demo)  
-
+- [Overview](#-overview)  
+- [Features](#-features)  
+- [Tech Stack](#️-tech-stack)  
+- [Project Structure](#-project-structure)  
+- [Getting Started](#-getting-started)  
+  - [Prerequisites](#-prerequisites)  
+  - [Installation](#-installation)  
+  - [Running the Project](#-running-the-project)  
+- [API Documentation](#-api-documentation)  
+- [Development & Testing](#-development--testing)  
+- [Deployment](#-deployment)  
+- [Contributing](#-contributing)  
+- [License](#-license)  
+- [Contact](#-contact)  
+- [Live Demo](#-live-demo)  
 ---
 
 ## 📖 Overview  
 
 **Hyundai Sales Management System** is a modern and scalable web application designed to **streamline vehicle sales and after-sales processes**. This system enables **dealerships** to efficiently manage clients, vehicles, sales transactions, and maintenance services.  
 
-The project is **containerized using Docker** and follows **a microservice-oriented structure** for **scalability** and **ease of deployment**.  
+The project is **containerized using Docker** and deploy using **Kubernetes**.  
 
 ![Overview](/docs/images/overview.png)
 
