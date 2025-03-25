@@ -12,6 +12,15 @@ The deployment includes the following components:
 
 The setup is designed for development and testing, leveraging Kubernetes' features like StatefulSets, Deployments, and Ingress to ensure easy management and scalability of services.
 
+## Architecture
+The architecture of this Kubernetes deployment is designed to ensure scalability, reliability, and secure communication between services. It leverages Kubernetes' core features such as Deployments, StatefulSets, and Ingress to manage the lifecycle of applications and provide seamless access to users.
+
+Below is a high-level architecture diagram illustrating the components and their interactions within the Kubernetes cluster:
+
+![Kubernetes Architecture Diagram](./images/k8s.jpg)
+
+This architecture provides a robust framework for deploying and managing the project in a Kubernetes environment. By utilizing Kubernetes' features, the deployment ensures that the services are scalable, maintainable, and secure, making it suitable for both development and production environments.
+
 ## Folder Structure
 
 The directory structure for the Kubernetes deployment is organized as follows:
