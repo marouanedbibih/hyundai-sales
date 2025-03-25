@@ -6,4 +6,4 @@ data:
   mysql-host: "mysql.default.svc.cluster.local"
   mysql-port: "3306"
   mysql-db: "hyundai_sales_db"
-  cors-allowed-origins: "*"
+  cors-allowed-origins: "https://hyundai-sales.local"
