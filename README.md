@@ -166,7 +166,7 @@ The backend is fully documented using Swagger. You can check the API documentati
 
 ## License  
 
-This project is **open-source** under the **MIT License**.  
+This project is **open-source** and licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for more details.
 
 ---
 
