@@ -19,7 +19,7 @@
 - [Live Demo](#-live-demo)  
 ---
 
-## 📖 Overview  
+## Overview  
 
 **Hyundai Sales Management System** is a modern and scalable web application designed to **streamline vehicle sales and after-sales processes**. This system enables **dealerships** to efficiently manage clients, vehicles, sales transactions, and maintenance services.  
 
