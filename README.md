@@ -191,7 +191,10 @@ The application will be available at:
 
 
 
----
+## Kubernetes Deployment
+
+The Hyundai Sales Management System is designed to be deployed on a Kubernetes cluster for scalability and resilience. The project includes Kubernetes manifests for deploying the application components, including the frontend, backend, and database. for full details on the Kubernetes deployment, refer to the [Kubernetes Documentation](docs/k8s.md).
+
 
 ## Contributing  
 
