@@ -1,83 +1,85 @@
-# Hyundai Sales Management System
+Here's the corrected and polished version of your README file:  
 
-## Table of Contents
+---
 
-- [Overview](#-overview)  
-- [Features](#-features)  
-- [Tech Stack](#️-tech-stack)  
-- [Project Structure](#-project-structure)  
-- [Getting Started](#-getting-started)  
-  - [Prerequisites](#-prerequisites)  
-  - [Installation](#-installation)  
-  - [Running the Project](#-running-the-project)  
-- [API Documentation](#-api-documentation)  
-- [Development & Testing](#-development--testing)  
-- [Deployment](#-deployment)  
-- [Contributing](#-contributing)  
-- [License](#-license)  
-- [Contact](#-contact)  
-- [Live Demo](#-live-demo)  
+# Hyundai Sales Management System  
+
+## Table of Contents  
+1. [Overview](#overview)  
+2. [Features](#features)  
+3. [Tech Stack](#tech-stack)  
+4. [Project Structure](#project-structure)  
+5. [Getting Started](#getting-started)  
+    - [Prerequisites](#prerequisites)  
+    - [Installation](#installation)  
+6. [Running the Project](#running-the-project)  
+    - [Run Backend (Standalone)](#run-backend-standalone)  
+    - [Run Frontend (Standalone)](#run-frontend-standalone)  
+7. [Docker Documentation](#docker-documentation)  
+8. [Kubernetes Deployment](#kubernetes-deployment)  
+9. [API Documentation](#api-documentation)  
+10. [Contributing](#contributing)  
+11. [License](#license)  
+12. [Contact](#contact)  
+
 ---
 
 ## Overview  
 
 **Hyundai Sales Management System** is a modern and scalable web application designed to **streamline vehicle sales and after-sales processes**. This system enables **dealerships** to efficiently manage clients, vehicles, sales transactions, and maintenance services.  
 
-The project is **containerized using Docker** and deploy using **Kubernetes**.  
-
-![Overview](/docs/images/overview.png)
+![Overview](/docs/images/overview.png)  
 
 ---
 
 ## Features  
 
-**Client Management** – Add, update, and manage customer information.  
-**Vehicle Inventory** – Track and manage vehicles.  
-**Sales Transactions** – Process and monitor sales.  
-**After-Sales Service** – Handle maintenance requests and repairs.  
-**Role-Based Access Control (RBAC)** – Admin, Sales, and Service roles.  
-**Modern UI/UX** – Built with **Next.js**, **Tailwind CSS**, and **Material UI**.  
-**REST API** – Powered by **Spring Boot** with **MySQL database**.  
+- **Client Management** – Add, update, and manage customer information.  
+- **Vehicle Inventory** – Track and manage vehicles.  
+- **Sales Transactions** – Process and monitor sales.  
+- **After-Sales Service** – Handle maintenance requests and repairs.  
+- **Role-Based Access Control (RBAC)** – Admin, Sales, and Service roles.  
 
 ---
 
 ## Tech Stack  
 
-| Layer            | Technology Stack                                |
-|-----------------|------------------------------------------------|
-| **Frontend**    | Next.js, TypeScript, Tailwind CSS, Material UI |
-| **Backend**     | Spring Boot, MySQL, JPA, Spring Security      |
-| **API**         | REST API with OpenAPI Documentation           |
-| **Containerization** | Docker, Docker Compose                    |
-| **Orchestration** | Docker Swarm                                 |
-| **Version Control** | Git, GitHub                               |
+| **Layer**          | **Technology Stack**                              |  
+|--------------------|--------------------------------------------------|  
+| **Frontend**       | Next.js, TypeScript, Tailwind CSS, Material UI    |  
+| **Backend**        | Spring Boot, MySQL, JPA, Spring Security          |  
+| **API**            | REST API with OpenAPI Documentation               |  
+| **Containerization** | Docker, Docker Compose, Kubernetes              |  
+| **Orchestration**  | Docker Swarm                                     |  
+| **Version Control** | Git, GitHub                                     |  
+| **CI/CD**          | GitHub Actions                                  |  
+| **Testing**        | JUnit                                            |  
+| **Monitoring**     | Loki, Grafana, Prometheus                        |  
 
 ---
 
 ## Project Structure  
 
-```
-hyundai-sales/
-│── backend/         # Spring Boot Backend
-│   ├── src/        # Application source code
-│   ├── pom.xml     # Maven dependencies
-│   ├── Dockerfile  # Backend Docker configuration
-│
-│── frontend/        # Next.js Frontend
-│   ├── src/        # Frontend source code
-│   ├── package.json # Node.js dependencies
-│   ├── Dockerfile  # Frontend Docker configuration
-│
-│── docker/          # Docker Setup
-│   ├── compose.yml  # Main Docker Compose file
-│   ├── compose.dev.yml  # Development Docker config
-│   ├── compose.prod.yml # Production Docker config
-│   ├── init.sql     # Database initialization script
-│
-│── docs/            # Documentation files
-│── LICENSE          # License file
-│── README.md        # Project documentation
-```
+```  
+Hyundai Sales Management System  
+│  
+├── aws                   # AWS Infrastructure Configurations  
+│   ├── ansible           # Ansible playbooks and configurations  
+│   ├── keys              # AWS keys and access management  
+│   └── terraform         # Terraform scripts for AWS resources  
+├── backend               # Backend Service (Spring Boot Application)  
+├── docker                # Docker and Docker Compose Configurations  
+├── docs                  # Documentation Folder  
+│   ├── docker.md         # Docker Documentation  
+│   ├── HELP.md           # Project Help Documentation  
+│   ├── images            # Project-related images  
+│   ├── infra.md          # Infrastructure Documentation  
+│   └── k8s.md            # Kubernetes Documentation  
+├── frontend              # Frontend Service (Next.js Application)  
+├── k8s                   # Kubernetes Configuration and Manifests  
+├── LICENSE               # License for the project  
+└── README.md             # Project Readme file  
+```  
 
 ---
 
@@ -87,130 +89,81 @@ hyundai-sales/
 
 Ensure you have the following installed:  
 
-- **Node.js** (for frontend)  
+- **Node.js 20+** (for frontend)  
 - **Java 21** (for backend)  
 - **Docker & Docker Compose**  
 - **MySQL**  
+- **Kubernetes**  
+- **kubectl**  
 
 ---
 
 ### Installation  
 
-Clone the repository:
+Clone the repository:  
 
-```sh
-git clone https://github.com/marouanedbibih/hyundai-sales.git
-cd hyundai-sales
-```
+```sh  
+git clone https://github.com/marouanedbibih/hyundai-sales.git  
+cd hyundai-sales  
+```  
 
 ---
 
 ### Running the Project  
 
-#### Run with Docker (Recommended)  
-
-```sh
-cd docker
-docker compose -f compose.yml -f compose.dev.yml up --build
-```
-
 #### Run Backend (Standalone)  
 
-```sh
-cd backend
-./mvnw install
-./mvnw spring-boot:run
-```
+```sh  
+cd backend  
+./mvnw install  
+./mvnw test  
+./mvnw spring-boot:run  
+```  
 
 #### Run Frontend (Standalone)  
 
-```sh
-cd frontend
-npm install
-npm run dev
-```
+```sh  
+cd frontend  
+npm install  
+npm test  
+npm run dev  
+```  
 
 ---
 
+## Docker Documentation  
+
+This section covers the Docker implementation in this project. Docker is utilized to streamline development, manage multi-environment configurations, and build the core infrastructure, including networks, storage, and databases. It also handles the creation of Docker images and workload orchestration. For more details, please refer to the [Docker Documentation](./docs/docker.md).  
+
+---
+
+## Kubernetes Deployment  
+
+The Hyundai Sales Management System is configured for deployment on a Kubernetes cluster to ensure scalability, resilience, and efficient resource management. The project includes Kubernetes manifests that define the deployment of core application components, such as the frontend, backend, and database. For detailed information on setting up and managing the Kubernetes deployment, refer to the [Kubernetes Documentation](docs/k8s.md).  
+
+---
 
 ## API Documentation  
 
-The backend exposes a **REST API** for frontend interaction.  
-
-| Method | Endpoint                        | Description               |
-|--------|---------------------------------|---------------------------|
-| `POST` | `/api/v1/login`                | User login                |
-| `GET`  | `/api/v1/users`                | Fetch all users           |
-| `GET`  | `/api/v1/clients`              | Fetch all clients         |
-| `GET`  | `/api/v1/vehicles`             | Fetch all vehicles        |
-| `GET`  | `/api/v1/sales`                | Fetch all sales           |
-| `GET`  | `/api/v1/after-sales`          | Fetch after-sales records |
-
-> **Complete API docs** are available via Swagger at:  
-> **`http://api.hyundai-sales.marouanedbibih.engineer/swagger-ui.html`**
+The backend is fully documented using Swagger. You can check the API documentation after running the project at `/swagger-ui.html`.  
 
 ---
-
-## Development & Testing  
-
-### Running Backend Tests  
-
-```sh
-cd backend
-./mvnw test
-```
-
-### Running Frontend Tests  
-
-```sh
-cd frontend
-npm test
-```
-
----
-
-## Deployment  
-
-For **production deployment**, use:  
-
-```sh
-docker compose -f compose.yml -f compose.prod.yml up --build -d
-```
-
-For **Docker Swarm**, use:
-```sh
-docker stack deploy -c compose.yml -c compose.prod.yml hyundai-sales
-```
-
-The application will be available at:  
-
-- **Frontend**: [http://hyundai-sales.marouanedbibih.engineer](http://hyundai-sales.marouanedbibih.engineer)  
-- **Backend API**: [http://api.hyundai-sales.marouanedbibih.engineer](http://api.hyundai-sales.marouanedbibih.engineer)
-- **Username:** admin
-- **Password:** password
-
-
-
-## Kubernetes Deployment
-
-The Hyundai Sales Management System is designed to be deployed on a Kubernetes cluster for scalability and resilience. The project includes Kubernetes manifests for deploying the application components, including the frontend, backend, and database. for full details on the Kubernetes deployment, refer to the [Kubernetes Documentation](docs/k8s.md).
-
 
 ## Contributing  
 
 1. **Fork the Repository**  
 2. **Create a Feature Branch**  
-   ```sh
-   git checkout -b feature/your-feature
-   ```
+   ```sh  
+   git checkout -b feature/your-feature  
+   ```  
 3. **Commit Your Changes**  
-   ```sh
-   git commit -m "Add feature description"
-   ```
+   ```sh  
+   git commit -m "Add feature description"  
+   ```  
 4. **Push to the Branch**  
-   ```sh
-   git push origin feature/your-feature
-   ```
+   ```sh  
+   git push origin feature/your-feature  
+   ```  
 5. **Submit a Pull Request**  
 
 ---
@@ -225,9 +178,8 @@ This project is **open-source** under the **MIT License**.
 
 For any inquiries, reach out to:  
 
-**Marouane Dbibih** – [m.dbibih@gmail.com](mailto:m.dbibih@gmail.com)  
+**Marouane Dbibih** – [marouane.dbibih@outlook.com](mailto:marouane.dbibih@outlook.com)  
+**LinkedIn** – [LinkedIn Profile](https://www.linkedin.com/in/marouanedbibih/)  
 
 **Live Demo**  
-[Hyundai Sales Management System](http://hyundai-sales.marouanedbibih.engineer)
-
----
+[Hyundai Sales Management System](http://hyundai-sales.marouanedbibih.studion)  
