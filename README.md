@@ -1,7 +1,3 @@
-Here's the corrected and polished version of your README file:  
-
----
-
 # Hyundai Sales Management System  
 
 ## Table of Contents  
