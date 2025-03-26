@@ -1,0 +1,75 @@
+name: Frontend Pipeline
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/frontend-pipeline.yaml"
+      - "frontend/**"
+      - "docker/**"
+      - "k8s/frontend/**"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/frontend-pipeline.yaml"
+      - "frontend/**"
+      - "docker/**"
+      - "k8s/frontend/**"
+  release:
+    types: [created]
+
+env:
+  WORKING_DIRECTORY: "frontend"
+  DOCKER_IMAGE_NAME: "hyundai-sales-frontend"
+  DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  DOCKER_IMAGE_TAG: "latest"
+
+jobs:
+  Continuous-Integration:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      actions: write
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '21'
+
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ${{ vars.WORKING_DIRECTORY }}
+
+      - name: Run tests
+        run: npm run test
+        working-directory: ${{ vars.WORKING_DIRECTORY }}
+
+      - name: Build project
+        run: npm run build
+        working-directory: ${{ vars.WORKING_DIRECTORY }}
+
+      - name: Build docker image
+        run: docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ vars.DOCKER_IMAGE_TAG}} -f docker/Dockerfile.frontend .
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Push docker image to repository
+        run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:${{ vars.DOCKER_IMAGE_TAG}}
