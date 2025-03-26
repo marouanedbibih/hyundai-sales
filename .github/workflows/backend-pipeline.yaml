@@ -3,7 +3,7 @@ name: Backend Pipeline
 on:
   push:
     branches:
-      - main
+      - dev
     paths:
       - ".github/workflows/backend-pipeline.yaml"
       - "backend/**"
@@ -12,7 +12,7 @@ on:
       - "k8s/backend/**"
   pull_request:
     branches:
-      - main
+      - dev
     paths:
       - ".github/workflows/backend-pipeline.yaml"
       - "backend/**"
