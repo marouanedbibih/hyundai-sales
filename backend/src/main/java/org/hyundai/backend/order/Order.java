@@ -4,6 +4,7 @@ import org.hyundai.backend.utils.BasicEntity;
 import org.hyundai.backend.vehicle.Vehicle;
 import org.springframework.cglib.core.Local;
 
+import io.micrometer.observation.annotation.Observed;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
@@ -17,6 +18,7 @@ import java.time.LocalDate;
 @Table(name = "orders")
 @Data
 @SuperBuilder
+@Observed(name = "order")
 public class Order extends BasicEntity {
 
     private String supplier;

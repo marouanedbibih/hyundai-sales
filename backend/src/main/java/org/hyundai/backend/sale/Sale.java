@@ -7,6 +7,7 @@ import org.hyundai.backend.user.User;
 import org.hyundai.backend.utils.BasicEntity;
 import org.hyundai.backend.vehicle.Vehicle;
 
+import io.micrometer.observation.annotation.Observed;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -26,6 +27,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Entity
 @Table(name = "sales")
+@Observed(name = "sale")
 public class Sale extends BasicEntity {
 
     private LocalDate date;

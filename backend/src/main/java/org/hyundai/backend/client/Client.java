@@ -6,6 +6,7 @@ import org.hyundai.backend.affterSale.AffterSale;
 import org.hyundai.backend.sale.Sale;
 import org.hyundai.backend.utils.BasicEntity;
 
+import io.micrometer.observation.annotation.Observed;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -21,6 +22,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @Entity
 @Table(name = "clients")
+@Observed(name = "client")
 public class Client extends BasicEntity {
 
     private String firstName;

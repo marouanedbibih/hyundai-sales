@@ -22,12 +22,20 @@ springdoc:
   swagger-ui:
     path: /swagger-ui
 
-# public:
-#   urls:
-#     - "/swagger-ui/**"
-#     - "/swagger-ui.html"
-#     - "/v3/api-docs/**"
-#     - "/api-docs/**"
-#     - "/swagger-resources/**"
-#     - "/webjars/**"
-#     - "/actuator/**"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics, prometheus
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
+  observations:
+    key-values:
+      application: loan-service
+  tracing:
+    sampling:
+      probability: 1.0

@@ -5,6 +5,7 @@ import org.hyundai.backend.user.User;
 import org.hyundai.backend.utils.BasicEntity;
 import org.hyundai.backend.vehicle.Vehicle;
 
+import io.micrometer.observation.annotation.Observed;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -24,6 +25,7 @@ import java.time.LocalDate;
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
+@Observed(name = "affterSale")
 public class AffterSale extends BasicEntity {
 
     private String description;

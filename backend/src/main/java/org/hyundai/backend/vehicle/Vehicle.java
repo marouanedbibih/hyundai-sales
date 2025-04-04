@@ -6,6 +6,7 @@ import org.hyundai.backend.affterSale.AffterSale;
 import org.hyundai.backend.sale.Sale;
 import org.hyundai.backend.utils.BasicEntity;
 
+import io.micrometer.observation.annotation.Observed;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -25,6 +26,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Entity
 @Table(name = "vehicles")
+@Observed(name = "vehicle")
 public class Vehicle extends BasicEntity {
 
     private String model;

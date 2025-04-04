@@ -9,6 +9,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import io.micrometer.observation.annotation.Observed;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -29,6 +30,7 @@ import lombok.experimental.SuperBuilder;
 @Table(name = "users")
 @AllArgsConstructor
 @NoArgsConstructor
+@Observed(name = "user")
 public class User extends BasicEntity implements UserDetails {
 
     @Column(unique = true, nullable = false)
