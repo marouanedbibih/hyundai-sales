@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    tools {
+
+    }
+
+    environment {
+
+    }
+    stages {
+
+        stage("Code Checkout") {
+            steps {
+                git branch: 'main', credentialsId: 'github', url: 'https://github.com/marouanedbibih/hyundai-sales'
+            }
+        }
+
+        stage("Print Message") {
+            steps {
+                script {
+                    echo "Starting the pipeline."
+                }
+            }
+        }
+    }
+
+}
