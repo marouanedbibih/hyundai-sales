@@ -10,8 +10,11 @@ const createJestConfig = nextJest({
 const config: Config = {
   coverageProvider: 'v8',
   testEnvironment: 'jsdom',
-  // Add more setup options before each test is run
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  collectCoverage: true,
+  coverageDirectory: 'coverage',
+  coverageReporters: ['lcov', 'text'],
+  testResultsProcessor: 'jest-sonar-reporter',
 }
  
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
