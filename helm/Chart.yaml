@@ -1,0 +1,14 @@
+apiVersion: v2
+name: hyundai-sales
+description: A Helm chart for Hyundai Sales application with Spring Boot backend, Next.js frontend, and MySQL database
+type: application
+version: 0.1.0
+appVersion: "2.0.0"
+maintainers:
+  - name: marouanedbibih
+    email: marouane.dbibih@outlook.com
+dependencies:
+  - name: mysql
+    version: 13.0.2
+    repository: https://charts.bitnami.com/bitnami
+    condition: mysql.enabled
