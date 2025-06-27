@@ -1,13 +1,12 @@
 pipeline {
     agent any
 
-    // tools {
+    tools {
+        maven 'maven-3.8.7'
+        jdk 'jdk-21.0.7'
+    }
 
-    // }
 
-    // environment {
-
-    // }
     stages {
 
         stage("Code Checkout") {
@@ -16,12 +15,8 @@ pipeline {
             }
         }
 
-        stage("Print Message") {
-            steps {
-                script {
-                    echo "Starting the pipeline. for Hyundai Sales"
-                }
-            }
+        stage("") {
+            
         }
     }
 

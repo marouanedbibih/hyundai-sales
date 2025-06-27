@@ -1,8 +1,12 @@
 services:
   backend:
+    image: marouanedbibih/hyundai-sales-backend:v2.0.0
     build:
       context: ..
       dockerfile: docker/Dockerfile.backend
+      platforms:
+        - linux/amd64
+        - linux/arm64
     container_name: hyundai-sales-backend
     restart: on-failure
     ports:
@@ -21,9 +25,13 @@ services:
       - hyundai-sales-net
 
   frontend:
+    image: marouanedbibih/hyundai-sales-frontend:v2.0.0
     build:
-      context: ../frontend
-      dockerfile: Dockerfile
+      context: ..
+      dockerfile: docker/Dockerfile.frontend
+      platforms:
+        - linux/amd64
+        - linux/arm64
       args:
         - NEXT_PUBLIC_API_URL=http://localhost:8083
     container_name: hyundai-sales-frontend
