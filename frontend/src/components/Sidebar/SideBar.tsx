@@ -46,12 +46,12 @@ const menuItems = [
     icon: BanknotesIcon,
     role: ["ADMIN", "SELLER"],
   },
-  {
-    title: "Affter Sales",
-    path: "/affter-sale",
-    icon: WrenchScrewdriverIcon,
-    role: ["ADMIN", "AFFTER_SALES_MANAGER"],
-  }
+  // {
+  //   title: "Affter Sales",
+  //   path: "/affter-sale",
+  //   icon: WrenchScrewdriverIcon,
+  //   role: ["ADMIN", "AFFTER_SALES_MANAGER"],
+  // }
 ];
 
 export const SideBar: React.FC<SideBarProps> = () => {
